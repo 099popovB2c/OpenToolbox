@@ -1,21 +1,15 @@
 # OpenToolbox
 
-A small desktop GUI that puts proven command-line tools behind simple, reviewable actions.
+Simple desktop GUI for useful open-source media/document command-line tools.
 
-## v0.2.0
+## v0.3.0
 
-- FFmpeg video compression presets: High quality / Balanced / Smaller file
-- Extract MP3
-- Single and batch ImageMagick conversion to WebP
-- Batch ExifTool metadata removal
-- yt-dlp video or audio-only download
-- Pandoc document conversion
-- Tool/version diagnostics
-- Exact command preview in the log
-- Cancel the current job
+- Persistent job queue stored under `~/.opentoolbox/queue.json`
+- Running jobs recover as pending after an interrupted app session
+- Retry all failed jobs
+- ffprobe media inspector for format, duration, bitrate and stream codecs
+- Lossless-style stream-copy video trim helper
+- Batch output naming templates such as `{stem}-small.webp`
+- Existing FFmpeg presets, MP3 extraction, ImageMagick batch conversion, ExifTool cleanup, yt-dlp and Pandoc actions retained
 
-```bash
-python opentoolbox.py
-```
-
-External tools are detected from PATH and are not bundled. No telemetry, account or backend is used.
+The GUI shows every command before execution. External tools remain separate executables and are never bundled silently.
