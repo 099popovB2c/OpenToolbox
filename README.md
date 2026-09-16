@@ -1,21 +1,21 @@
 # OpenToolbox
 
-A small desktop GUI that puts proven command-line tools behind simple buttons.
+A small desktop GUI that puts proven command-line tools behind simple, reviewable actions.
 
-## Supported tools
+## v0.2.0
 
-- FFmpeg: compress video, extract audio
-- ImageMagick: convert images
-- ExifTool: remove metadata
-- yt-dlp: download a media URL
-- Pandoc: convert documents
-
-The app detects which tools are installed and only enables compatible operations.
-
-## Run
+- FFmpeg video compression presets: High quality / Balanced / Smaller file
+- Extract MP3
+- Single and batch ImageMagick conversion to WebP
+- Batch ExifTool metadata removal
+- yt-dlp video or audio-only download
+- Pandoc document conversion
+- Tool/version diagnostics
+- Exact command preview in the log
+- Cancel the current job
 
 ```bash
 python opentoolbox.py
 ```
 
-No telemetry, no account and no backend. External tools are not bundled; install them separately using your OS package manager.
+External tools are detected from PATH and are not bundled. No telemetry, account or backend is used.
