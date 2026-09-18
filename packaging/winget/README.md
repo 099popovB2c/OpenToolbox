@@ -21,7 +21,7 @@ winget install --manifest .\packaging\winget\0.4.1
 Installer SHA-256:
 
 ```text
-69954df583002d503a08063adbd259f8c30b3f98a64acb4f90a7e42078f49a31
+f6e43e2876f11b6d9b7ecfa794eb10e5a559935d51e6c6282843c9ad060ba321
 ```
 
 The final publication step is a pull request to `microsoft/winget-pkgs` containing these three YAML files.

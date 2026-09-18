@@ -8,6 +8,6 @@ Commands:
 Installers:
   - Architecture: x64
     InstallerUrl: https://github.com/099popovB2c/OpenToolbox/releases/download/v0.4.1/OpenToolbox.exe
-    InstallerSha256: 69954DF583002D503A08063ADBD259F8C30B3F98A64ACB4F90A7E42078F49A31
+    InstallerSha256: F6E43E2876F11B6D9B7ECFA794EB10E5A559935D51E6C6282843C9AD060BA321
 ManifestType: installer
 ManifestVersion: 1.12.0
