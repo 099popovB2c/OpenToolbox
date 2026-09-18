@@ -53,7 +53,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          if ! gh release view v0.4.1 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh release create v0.4.1 --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "OpenToolbox v0.4.1" --notes "Windows distribution release. Includes the standalone OpenToolbox GUI executable and SHA-256 checksum. FFmpeg, ImageMagick, ExifTool, yt-dlp and Pandoc remain external tools detected from PATH."
+          if gh release view v0.4.1 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "v0.4.1 is already published; leaving release assets unchanged."
+            exit 0
           fi
-          gh release upload v0.4.1 release/OpenToolbox.exe release/OpenToolbox.exe.sha256 --repo "$GITHUB_REPOSITORY" --clobber
+          gh release create v0.4.1 --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "OpenToolbox v0.4.1" --notes "Windows distribution release. Includes the standalone OpenToolbox GUI executable and SHA-256 checksum. FFmpeg, ImageMagick, ExifTool, yt-dlp and Pandoc remain external tools detected from PATH."
+          gh release upload v0.4.1 release/OpenToolbox.exe release/OpenToolbox.exe.sha256 --repo "$GITHUB_REPOSITORY"
