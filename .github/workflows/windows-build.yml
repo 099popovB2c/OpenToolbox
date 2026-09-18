@@ -35,3 +35,25 @@ jobs:
             dist/OpenToolbox.exe
             dist/OpenToolbox.exe.sha256
           if-no-files-found: error
+
+  release:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: windows-exe
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download Windows artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: OpenToolbox-Windows-x64
+          path: release
+      - name: Publish v0.4.1 release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if ! gh release view v0.4.1 >/dev/null 2>&1; then
+            gh release create v0.4.1 --target "$GITHUB_SHA" --title "OpenToolbox v0.4.1" --notes "Windows distribution release. Includes the standalone OpenToolbox GUI executable and SHA-256 checksum. FFmpeg, ImageMagick, ExifTool, yt-dlp and Pandoc remain external tools detected from PATH."
+          fi
+          gh release upload v0.4.1 release/OpenToolbox.exe release/OpenToolbox.exe.sha256 --clobber
