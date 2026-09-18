@@ -1,3 +1,20 @@
+## Windows executable
+
+OpenToolbox is built as a standalone Windows x64 executable with PyInstaller.
+
+The executable contains the OpenToolbox GUI itself. Media/document engines such as **FFmpeg, ImageMagick, ExifTool, yt-dlp and Pandoc remain external tools** and are detected from `PATH` at runtime. Missing tools are shown as unavailable in the UI.
+
+For each Windows build, GitHub Actions produces:
+
+```text
+OpenToolbox.exe
+OpenToolbox.exe.sha256
+```
+
+The checksum can be used to verify the downloaded executable before running it.
+
+---
+
 # OpenToolbox
 
 OpenToolbox is a **desktop-friendly wrapper around powerful open-source command-line tools**. Its goal is to let normal users perform common media/document operations without memorizing FFmpeg, ImageMagick, ExifTool, yt-dlp or Pandoc commands.

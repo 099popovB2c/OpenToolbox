@@ -1,0 +1,37 @@
+name: Windows Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-exe:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.13'
+      - name: Install PyInstaller
+        run: python -m pip install pyinstaller==6.22.3
+      - name: Build standalone executable
+        run: python -m PyInstaller --noconfirm --clean --onefile --windowed --name OpenToolbox opentoolbox.py
+      - name: Generate SHA-256
+        shell: pwsh
+        run: |
+          $hash = (Get-FileHash "dist\OpenToolbox.exe" -Algorithm SHA256).Hash.ToLowerInvariant()
+          Set-Content -Path "dist\OpenToolbox.exe.sha256" -Value "$hash  OpenToolbox.exe" -Encoding ascii
+          Get-Item "dist\OpenToolbox.exe"
+          Get-Content "dist\OpenToolbox.exe.sha256"
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: OpenToolbox-Windows-x64
+          path: |
+            dist/OpenToolbox.exe
+            dist/OpenToolbox.exe.sha256
+          if-no-files-found: error

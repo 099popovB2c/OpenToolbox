@@ -2,7 +2,7 @@
 import json,os,shlex,shutil,subprocess,threading,time,tkinter as tk
 from pathlib import Path
 from tkinter import filedialog,messagebox,simpledialog,ttk
-VERSION='0.3.0';TOOLS={'ffmpeg':['ffmpeg'],'ffprobe':['ffprobe'],'imagemagick':['magick','convert'],'exiftool':['exiftool'],'yt-dlp':['yt-dlp'],'pandoc':['pandoc']};VIDEO_PRESETS={'High quality':('20','slow'),'Balanced':('23','medium'),'Smaller file':('28','medium')};QUEUE_FILE=Path.home()/'.opentoolbox'/'queue.json'
+VERSION='0.4.1';TOOLS={'ffmpeg':['ffmpeg'],'ffprobe':['ffprobe'],'imagemagick':['magick','convert'],'exiftool':['exiftool'],'yt-dlp':['yt-dlp'],'pandoc':['pandoc']};VIDEO_PRESETS={'High quality':('20','slow'),'Balanced':('23','medium'),'Smaller file':('28','medium')};QUEUE_FILE=Path.home()/'.opentoolbox'/'queue.json'
 def which_group(names):
  for n in names:
   p=shutil.which(n)

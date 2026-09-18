@@ -3,7 +3,7 @@ import argparse,json,subprocess,time
 from collections import Counter
 from pathlib import Path
 
-VERSION='0.4.0'
+VERSION='0.4.1'
 DEFAULT_QUEUE=Path.home()/'.opentoolbox'/'queue.json'
 TERMINAL={'done','failed','cancelled'}
 
